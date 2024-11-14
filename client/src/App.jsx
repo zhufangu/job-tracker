@@ -35,37 +35,33 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <AddJob />,
+          },
+          {
+            // The paths should be relative to the parent route (dashboard),
+            // so they should not start with a /
+            path: 'stats',
+            element: <Stats />,
+          },
+          {
+            path: 'all-jobs',
+            element: <AllJobs />,
+          },
+          {
+            path: 'profile',
+            element: <Profile />,
+          },
+          {
+            path: 'admin',
+            element: <Admin />,
+          },
+        ],
       },
     ],
   },
-  // {
-  //   path: '/error',
-  //   element: <Error />,
-  // },
-  // {
-  //   path: '/stats',
-  //   element: <Stats />,
-  // },
-  // {
-  //   path: '/all-jobs',
-  //   element: <AllJobs />,
-  // },
-  // {
-  //   path: '/add-job',
-  //   element: <AddJob />,
-  // },
-  // {
-  //   path: '/edit-job',
-  //   element: <EditJob />,
-  // },
-  // {
-  //   path: '/profile',
-  //   element: <Profile />,
-  // },
-  // {
-  //   path: '/admin',
-  //   element: <Admin />,
-  // },
 ]);
 
 const App = () => {
