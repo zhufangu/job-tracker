@@ -14,6 +14,27 @@ import {
   Admin,
 } from './pages';
 
+// Access the dark theme
+// // export makes it available to dashboard layout so that if a user logs out and logs in again,
+// // the dark theme will be saved
+// export const checkDefaultTheme = () => {
+//   const isDarkTheme = localStorage.getItem('darkTheme') === 'true'; // get the dark theme from local storage
+//   document.body.classList.toggle('dark-theme', isDarkTheme);
+//   return isDarkTheme;
+// };
+
+const checkDefaultTheme = () => {
+  const isDarkTheme = localStorage.getItem('darkTheme') === 'true'; // get the dark theme from local storage
+  document.body.classList.toggle('dark-theme', isDarkTheme);
+  return isDarkTheme;
+};
+
+const isDarkThemeEnabled = checkDefaultTheme();
+
+// checkDefaultTheme(); // Call the function to set the dark theme
+// // not use const isDarkThemeEnabled = checkDefaultTheme();
+// // won't pass the variable to the DashboardLayout component
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <DashboardLayout />,
+        element: <DashboardLayout isDarkThemeEnabled={isDarkThemeEnabled} />,
         children: [
           {
             index: true,
